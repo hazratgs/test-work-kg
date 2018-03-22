@@ -11,7 +11,7 @@ const initialState = {
       type: 'scientist',
       video: true,
       face: 'https://zengarden.in/wp-content/uploads/2012/10/tesla.jpg',
-      img: 'https://ae01.alicdn.com/kf/HTB1KlsZNVXXXXa5apXXq6xXFXXX1/-.jpg_640x640.jpg',
+      img: 'https://cdn.lifehacker.ru/wp-content/uploads/2015/09/Tesla_Universe_18_Colorado_Springs_1442241934.jpg',
       color: 'red',
       title: 'Пробеги полумарафон в Вероне',
       text: 'Очень долго хотела скинуть лишний вес да и вообще начать вести здоровый образ жизни. Но все было некогда. Знакомые позвали на открытую тренировку в школу бега с мастером спорта. Чем черт не шутит, решила сходить, тем более интересно было узнать, почему.'
@@ -22,7 +22,7 @@ const initialState = {
       type: 'scientist',
       video: false,
       face: 'https://euroislam.pl/app/uploads/2012/08/Albert-Einstein.jpg',
-      img: 'https://ae01.alicdn.com/kf/HTB1KlsZNVXXXXa5apXXq6xXFXXX1/-.jpg_640x640.jpg',
+      img: 'https://hi-news.ru/wp-content/uploads/2017/01/1429318644_albert_einshtein5.jpg',
       color: 'blue',
       title: 'Пробеги полумарафон в Вероне',
       text: 'Очень долго хотела скинуть лишний вес да и вообще начать вести здоровый образ жизни. Но все было некогда. Знакомые позвали на открытую тренировку в школу бега с мастером спорта. Чем черт не шутит, решила сходить, тем более интересно было узнать, почему.'
@@ -44,7 +44,7 @@ const initialState = {
       type: 'developer',
       video: false,
       face: 'https://24smi.org/public/media/235x307/celebrity/2017/11/22/nwv7kqyvs72t-alan-tiuring.jpg',
-      img: 'https://ae01.alicdn.com/kf/HTB1KlsZNVXXXXa5apXXq6xXFXXX1/-.jpg_640x640.jpg',
+      img: 'https://therunnereclectic.files.wordpress.com/2014/11/alan-turing-running.jpg',
       color: 'yellow',
       title: 'Пробеги полумарафон в Вероне',
       text: 'Очень долго хотела скинуть лишний вес да и вообще начать вести здоровый образ жизни. Но все было некогда. Знакомые позвали на открытую тренировку в школу бега с мастером спорта. Чем черт не шутит, решила сходить, тем более интересно было узнать, почему.'
