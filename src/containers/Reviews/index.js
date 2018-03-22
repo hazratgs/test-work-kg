@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter, Link } from 'react-router-dom'
-import { changeActiveReview } from '../../actions/App'
+import { changeActiveReview, activeNextReview } from '../../actions/App'
 import CSSModules from 'react-css-modules'
 import s from './style.pcss'
 
@@ -19,18 +19,51 @@ import RIcon from '../../public/svg/r.svg'
     activeReview: state.App.activeReview
   }),
   dispatch => ({
-    changeActiveReview: bindActionCreators(changeActiveReview, dispatch)
+    changeActiveReview: bindActionCreators(changeActiveReview, dispatch),
+    activeNextReview: bindActionCreators(activeNextReview, dispatch)
   })
 )
 @CSSModules(s)
 export default class Reviews extends PureComponent {
+  state = {
+    active: {}
+  }
+
+  componentWillMount () {
+    this.findActiveElement(this.props)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.findActiveElement(nextProps)
+  }
+
+  findActiveElement = props => {
+    const [active] = props.reviews.filter(item => item.id === props.activeReview)
+    this.setState({ active })
+  }
+
+  nextHandle = () => {
+    if (this.state.active.id < this.props.reviews.length) {
+      this.props.activeNextReview(this.state.active.id + 1)
+    } else {
+      this.props.activeNextReview(1)
+    }
+  }
+
+  prevHandle = () => {
+    if (this.state.active.id !== 1) {
+      this.props.activeNextReview(this.state.active.id - 1)
+    } else {
+      this.props.activeNextReview(4)
+    }
+  }
+
   render () {
-    const [active] = this.props.reviews.filter(item => item.id === this.props.activeReview)
     const reviews = this.props.reviews.map(item =>
       <button
         key={item.id}
         onClick={() => this.props.changeActiveReview(item.id)}
-        styleName='item' className={`${s[item.color]} ${active.id === item.id && s.active}`}
+        styleName='item' className={`${s[item.color]} ${this.state.active.id === item.id && s.active}`}
       >
         <div styleName='face'>
           <img src={item.face} />
@@ -47,42 +80,42 @@ export default class Reviews extends PureComponent {
         <div styleName='head'>
           <h2 styleName='title'>Отзывы</h2>
           <div styleName='buttons'>
-            <button styleName='item'>
-              <PrevIconButton/>
+            <button styleName='item' onClick={this.prevHandle}>
+              <PrevIconButton />
             </button>
-            <button styleName='item'>
-              <NextIconButton/>
+            <button styleName='item' onClick={this.nextHandle}>
+              <NextIconButton />
             </button>
           </div>
         </div>
         <div styleName='content'>
-          <div styleName='wrapper'>
+          <div styleName='wrapper' className={s[this.state.active.color]}>
             <div styleName='img'>
-              <img src={active.img} />
+              <img src={this.state.active.img} />
               <div styleName='bottom'>
-                {active.video && (
+                {this.state.active.video && (
                   <button styleName='video'>
                     <VideoIcon />
                   </button>
                 )}
                 <p styleName='user'>
-                  {active.name}
+                  {this.state.active.name}
                 </p>
               </div>
             </div>
             <div styleName='data'>
               <div styleName='header'>
                 <div styleName='label'>
-                  <GoalIcon/>
+                  <GoalIcon />
                   <span>Цель</span>
                 </div>
-                <p>{active.title}</p>
+                <p>{this.state.active.title}</p>
               </div>
               <div styleName='text'>
-                <p>{active.text}</p>
+                <p>{this.state.active.text}</p>
                 <Link to='/'>Читать целиком</Link>
               </div>
-              <RIcon styleName='background'/>
+              <RIcon styleName='background' />
             </div>
           </div>
           <div styleName='users'>

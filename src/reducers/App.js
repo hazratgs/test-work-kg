@@ -1,5 +1,6 @@
 import {
-  CHANGE_ACTIVE_REVIEW
+  CHANGE_ACTIVE_REVIEW,
+  ACTIVE_NEXT_REVIEW
 } from '../constants/App'
 
 const initialState = {
@@ -33,7 +34,7 @@ const initialState = {
       video: true,
       face: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Muhammad_Ali_NYWTS.jpg/440px-Muhammad_Ali_NYWTS.jpg',
       img: 'https://ae01.alicdn.com/kf/HTB1KlsZNVXXXXa5apXXq6xXFXXX1/-.jpg_640x640.jpg',
-      color: 'green',
+      color: 'purple',
       title: 'Пробеги полумарафон в Вероне',
       text: 'Очень долго хотела скинуть лишний вес да и вообще начать вести здоровый образ жизни. Но все было некогда. Знакомые позвали на открытую тренировку в школу бега с мастером спорта. Чем черт не шутит, решила сходить, тем более интересно было узнать, почему.'
     },
@@ -55,6 +56,9 @@ const initialState = {
 export default function appState (state = initialState, action) {
   switch (action.type) {
     case CHANGE_ACTIVE_REVIEW:
+      return { ...state, activeReview: action.payload }
+
+    case ACTIVE_NEXT_REVIEW:
       return { ...state, activeReview: action.payload }
 
     default:

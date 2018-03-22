@@ -63,7 +63,22 @@
     .wrapper {
       display: flex;
       height: 417px;
-      background-color: red;
+
+      &.purple {
+        background-color: var(--purple);
+      }
+
+      &.yellow {
+        background-color: var(--yellow);
+      }
+
+      &.red {
+        background-color: var(--red);
+      }
+
+      &.blue {
+        background-color: var(--blue);
+      }
 
       .img {
         flex: 0 0 50%;
@@ -248,24 +263,24 @@
           z-index: -1;
         }
 
-        &.green {
-          &::after, &::before { background-color: green; }
-          .name span { color: green; }
+        &.purple {
+          &::after, &::before { background-color: var(--purple); }
+          .name span { color: var(--purple); }
         }
 
         &.yellow {
-          &::after, &::before { background-color: yellow; }
-          .name span { color: yellow; }
+          &::after, &::before { background-color: var(--yellow); }
+          .name span { color: var(--yellow); }
         }
 
         &.red {
-          &::after, &::before { background-color: red; }
-          .name span { color: red; }
+          &::after, &::before { background-color: var(--red); }
+          .name span { color: var(--red); }
         }
 
         &.blue {
-          &::after, &::before { background-color: blue; }
-          .name span { color: blue; }
+          &::after, &::before { background-color: var(--blue); }
+          .name span { color: var(--blue); }
         }
 
         &.active {
