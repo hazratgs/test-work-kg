@@ -1,4 +1,6 @@
-import { } from '../constants/App'
+import {
+  CHANGE_ACTIVE_REVIEW
+} from '../constants/App'
 
 const initialState = {
   reviews: [
@@ -52,6 +54,9 @@ const initialState = {
 
 export default function appState (state = initialState, action) {
   switch (action.type) {
+    case CHANGE_ACTIVE_REVIEW:
+      return { ...state, activeReview: action.payload }
+
     default:
       return state
   }

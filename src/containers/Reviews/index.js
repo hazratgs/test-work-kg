@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { withRouter, Link } from 'react-router-dom'
+import { changeActiveReview } from '../../actions/App'
 import CSSModules from 'react-css-modules'
 import s from './style.pcss'
 
@@ -15,6 +17,9 @@ import RIcon from '../../public/svg/r.svg'
   state => ({
     reviews: state.App.reviews,
     activeReview: state.App.activeReview
+  }),
+  dispatch => ({
+    changeActiveReview: bindActionCreators(changeActiveReview, dispatch)
   })
 )
 @CSSModules(s)
@@ -24,6 +29,7 @@ export default class Reviews extends PureComponent {
     const reviews = this.props.reviews.map(item =>
       <button
         key={item.id}
+        onClick={() => this.props.changeActiveReview(item.id)}
         styleName='item' className={`${s[item.color]} ${active.id === item.id && s.active}`}
       >
         <div styleName='face'>
